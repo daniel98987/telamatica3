@@ -1,0 +1,8 @@
+
+2. Para crear el árbol de directorios, en la dirección /home/user118 se usa el comando mkdir
+ como se indica acontinuación:
+
+mkdir -p ejercicio1/{a{a1,a2},b/b1,c/{c1,c2},copia,movido,todo}
+
+
+

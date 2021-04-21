@@ -1,3 +1,9 @@
+# 7. Pasos realizados en los puntos 8,9,10,11 y 12 
+#
+# Pasos PUNTO 8
+# Copiar Comandos1.txt
+cp /home/user118/ejercicio1/a/a1/Comandos1.txt /home/user118/ejercicio1/copia
+# Copia Comandos2.txt
 cp /home/user118/ejercicio1/a/a2/Comandos2.txt /home/user118/ejercicio1/copia
 # Copiar Comandos3.txt
 cp /home/user118/ejercicio1/b/b1/Comandos3.txt /home/user118/ejercicio1/copia
@@ -11,7 +17,25 @@ mv /home/user118/ejercicio1/a/a2 /home/user118/ejercicio1/movido
 # TAR
 # El comando Tar en Linux es uno de los más usados para comprimir archivos. 
 # Tiene muchos beneficios y por eso los profesionales lo aman. Aprende a usarlo en este tutorial.
-OpciónDescripción-cCrear un nuevo archivo .tar-vMuestra una descripción detallada del progreso de la compresión-fNombre del archivo-zCompresión gzip-jCompresión bzip2-CExtraer archivos en un directorio diferente-xExtraer el archivo-rActualizar o agregar un archivo o directorio en un archivo .tar existente
+Opción
+Descripción
+-c
+Crear un nuevo archivo .tar
+-v
+Muestra una descripción detallada del progreso de la compresión
+-f
+Nombre del archivo
+-z
+Compresión gzip
+-j
+Compresión bzip2
+-C
+Extraer archivos en un directorio diferente
+-x
+Extraer el archivo
+-r
+Actualizar o agregar un archivo o directorio en un archivo .tar existente
+
 # Para comprimir y empaquetar el contenido del directorio a, y guardarlo en el directorio todo, con el nombre a.tar.gz Se realizó los siguientes pasos:
 tar -cvzf a.tar.gz /home/user118/ejercicio1/a
 # Pasos PUNTO 11

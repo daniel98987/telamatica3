@@ -1,0 +1,35 @@
+CRON
+Cron es el nombre del programa que permite a usuarios Linux/Unix ejecutar automáticamente comandos o scripts (grupos de comandos) a una hora o fecha específica. Es usado normalmente para comandos de tareas administrativas, como respaldos, pero puede ser usado para ejecutar cualquier cosa. Como se define en las páginas del manual de cron (#> man cron) es un demonio que ejecuta programas agendados.
+Iniciar Cron
+#> /etc/rc.d/init.d/crond status
+#> /etc/init.d/crond status   Usa cualquiera de los dos dependiendo de tu distro
+crond (pid 507) is running...
+
+o si tienes el comando service instalado:
+#> service crond status
+crond (pid 507) is running...
+
+se puede también revisar a través del comando ps:
+# ps -ef   |  grep crond
+
+si por alguna razón, cron no esta funcionando:
+#> /etc/rc.d/init.d/crond start
+Starting crond:            [ OK ]
+
+Ejemplos
+1. Programe un cron para que se ejecute a las 5 a. M. Todos los días
+0 5 * * * /scripts/job.sh
+2. Programe un cron para que se ejecute dos veces al día a las 6 a. M. Y a las 6 p. M.
+0 6,18 * * * /scripts/job.sh
+3. Programe un cron para que se ejecute cada minuto
+* * * * * /scripts/job.sh
+4. Programe un cron para que se ejecute todos los lunes a las 7 PM.
+0 19 * * mon /scripts/job.sh
+
+Ventajas
+* Cron es el que le permite a un usuario del sistema planificar tarea de ejecución en alguna estampa de tiempo.
+* Cada usuario podrá, por defecto, planificar tareas en el sistema, siempre y cuando posea los privilegios suficientes para ejecutar dichas tareas.
+* Cualquier usuario del sistema podrá verificar su lista de tareas con el siguiente comando:
+      crontab -l
+Utilidad dentro de la ingeniería de sistemas
+Cron es una gran ayuda en el Shell de Linux, ya que muchos procesos necesitan ser verificados y monitoreados, debida a la ejecución de Scripts es necesario que se ejecuten en un periodo de tiempo o en una fecha exacta, por ejemplo, puede ser utilizado para crear copias de seguridad, determinado periodo de tiempo, en Universidades, empresas, bancos, etc.  

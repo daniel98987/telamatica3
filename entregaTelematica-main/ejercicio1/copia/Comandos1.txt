@@ -1,0 +1,130 @@
+DATE
+El comando date nos permite imprimir la fecha de hoy en muchísimos formatos. También nos permite extraer solo el día, mes, día de la semana, etc. Es útil en la ejecución de scripts pues nos permite saber cuándo se ha ejecutado, por ejemplo, si estos se ejecutan de forma automática en ciertas circunstancias. 
+Utilidad y ejemplos: 
+Si lo ejecutamos sin argumentos nos imprime la fecha de hoy en formato largo.
+$ date
+mie sep 25 12:31:17 CEST 2020
+Si queremos controlar el formato tenemos que usar una sintaxis tipo
+
+$date +formato
+
+donde en formato tenemos muchas posibilidades. Algunas de ellas las indicamos en la siguiente tabla
+
+%aDía de la semana abreviado (lun, mar, etc)
+%ADía de la semana (lunes, martes, etc)
+%bMés abreviado (ene, feb, mar, abr, etc
+%eDía del mes (1,2,..,31)%DFecha en formato dd/mm/aa
+%HHora en formato 00,..,23
+%MMinutos en formato 00,..,59
+%THora completa en formato hh:mm:ss (24 horas)
+%WSemana del año, el lunes el primer día (00,..,53)
+
+Para conocer todos los posibles formatos es usar el comando de ayuda man con man date que nos mostrará el manual de date.
+$ man date
+También se puede intercalar texto como en los siguientes ejemplos:
+#Sin texto
+$ date +%H%M
+2215
+
+#Con texto, no podemos incluir espacios en blanco
+$ date +hora%Hdia%M
+hora22dia15
+
+#Pero podemos formatearlo mejor entrecomillando el texto
+$date +"hora: "%H" - dia: "%M
+hora: 22 - dia: 15
+
+Se puede usar el comando date para indicarle una fecha específica con la opción -d como en los ejemplos:
+#La fecha de ayer 
+$ date -d yesterday
+mar sep 24 12:31:17 CEST 2013
+
+#La fecha de mi cumpleaños
+$ date -d 02/17/76
+mar feb 17 00:00:00 CEST 1976
+
+$ date -d 02/17/76 +"Nací un "%A
+Nací un martes
+
+CD
+El comando cd (del inglés, change directory), es una orden utilizada en sistemas operativos del tipo UNIX como GNU/Linux para cambiar el directorio de trabajo.
+Es uno de los comandos básico en GNU/Linux y viene por defecto integrado en todas sus distribuciones de forma predeterminada. Si bien una herramienta muy simple, es muy útil a la hora de trabajar con directorios desde nuestra terminal.
+cd [opciones] [{ruta relativa}{ruta absoluta}{Directorios especiales}]
+Utilidad y ejemplos:
+Haciendo uso del directorio padre ..
+Para moverse un directorio hacia atrás hasta la raíz se usa el siguiente comando
+$ CD ..
+Haciendo uso del directorio hijo .
+Si tenemos la estructura /home/Estefany/A/B/C y se quiere llegar al directorio C, se hace de la siguiente manera:
+$ CD ./B/C
+
+LS 
+El comando ls es muy útil para ver los archivos y directorios que tenemos dentro del directorio en el que estamos ubicados.
+Ejemplos y utilidad:
+Para ver los archivos y directorios dentro del directorio actual, incluyendo los archivos y directorios ocultos.
+$ ls –a
+Ordena los archivos por fecha de modificación
+$ ls –t
+Ordena los archivos por extensión.
+$ ls –x
+Muestra toda la información: usuario, grupo, permisos, tamaño, fecha y hora de creación.
+$ ls –l
+
+pwd
+El comando pwd es un comando del tipo Unix, donde sus siglas provienen del en inglés print working directory, cuya traducción sería imprimir directorio de trabajo, se utiliza para imprimir el nombre del directorio actual en una sesión de comandos. Si en el intérprete de comandos no lo está mostrando ya, el usuario puede invocar este comando para averiguar cuál es sú ubicación en el árbol de directorios del sistema de ficheros.
+
+Ejemplos y utilidades:
+Para saber cual es el directorio donde me encuentro ubicado, solo debemos ingresar el la terminal el comando pwd.
+$ Pwd
+El comando pwd cuenta con la opción –help para obtener ayuda relacionada al uso del comando. 
+$ Pwd –help
+ Si queremos obtener la ruta física donde nos encontramos haremos uso del parámetro -P (physical).
+$ Pwd –p
+l comando pwd cuenta con el parámetro -L (lógica) para imprimirnos la ruta en la que nos encontramos, sin tener en cuenta hacia donde apunta.
+$ Pwd –l
+
+CLEAR
+clear es un comando de linux que borra toda la información del terminal y lo deja como si fuera nuevo.
+Ejemplo y utilidad:
+$ Clear
+Borrara toda la pantalla y nos deja un terminal limpio
+
+MKDIR
+Esta herramienta es usada para crear un nuevo subdirectorio o carpeta del sistema de archivos. El nombre mkdir tiene su origen en las palabras make subdirectory que significan: crear subdirectorio en inglés.
+Sintaxis 
+mkdir [Parámetros] [Nombre del directorio] [Ruta]
+Ejemplos y utilidades:
+Crear un directorio de un nombre simple
+
+$ mkdir nombre_del_directorio
+Crear un directorio de un nombre compuesto 
+$ mkdir “nombre del directorio”
+
+RM
+El comando rm (“eliminar”) se usa para eliminar archivos. Cuando se usa recursivamente, se puede usar para borrar también directorios. Rm elimina cada archivo especificado en la línea de comando
+Ejemplos y utilidades:
+Elimina todos los archivos en el directorio de trabajo
+
+[code] rm * [/code]
+
+Eliminar archivo sin pedir confirmación
+[code] rm -f archivo.txt [/code
+
+Pedir confirmación para eliminar archivo
+[code] rm archivo.txt [/code]
+
+SUDO
+ Permite a los usuarios ejecutar programas con los privilegios de seguridad de otro usuario (normalmente el usuario root) de manera segura, convirtiéndose así temporalmente en súper usuario.
+
+Ejemplos y utilidades: 
+-V, permite listar las opciones (defaults) establecidas por defecto para sudo todos los usuarios, comandos, equipos, etc.
+# sudo –V
+ Una de las opciones más interesantes es la que permite editar archivos de texto de root (claro, con el permiso otorgado en ‘sudoers’ como se verá más adelante), y esto se logra con la opción -e, esta opción está ligada a otro comando de sudo llamado sudoedit que invoca al editor por defecto del usuario, que generalmente es vi.
+$ sudo -e /etc/inittab 
+
+
+
+
+
+
+

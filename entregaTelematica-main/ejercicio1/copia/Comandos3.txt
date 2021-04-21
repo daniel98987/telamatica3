@@ -1,0 +1,83 @@
+TOUCH
+El comando touch de Linux se usa principalmente para crear archivos vacíos y cambiar marcas de tiempo de archivos o carpetas. La información de marca de tiempo de los archivos consta de tres atributos: tiempo de acceso, tiempo de modificación y tiempo de cambio.
+¿Qué es una marca de tiempo en Linux?
+En Linux, cada archivo y carpeta tiene una marca de tiempo asociada que proporciona información sobre cuándo se modificó el contenido de un archivo o sus atributos. Hay tres tipos de marcas de tiempo:
+* Tiempo de acceso (atime): la última vez que se leyó un archivo.
+* Tiempo de modificación (mtime): la última vez que se modificó el contenido de un archivo. Al igual que el tiempo de acceso, también forma parte de los metadatos del estado de los archivos.
+* Tiempo de cambios realizados (ctime): la última vez que se modificaron los metadatos de un archivo (por ejemplo, permisos).
+Ejemplos y utilidades: 
+Crear un archivo usando Touch
+El comando touch sin ninguna opción crea un nuevo archivo. Si el archivo existe, el comando actualizará el tiempo de acceso y de modificación a la hora actual sin cambiar su contenido:
+touch nombre_archivo.txt
+
+Cambiar el tiempo de acceso usando el comando touch
+Para cambiar el tiempo de acceso de un archivo a la hora actual, usa la opción –a seguida del nombre del archivo con el comando touch, como en el siguiente ejemplo:
+touch -a nombre_archivo.txt
+
+Cambiar el tiempo de modificación con Touch
+La opción -m junto con el comando touch cambia la hora de modificación de un archivo a la hora actual:
+touch -m nombre_archivo1.txt
+
+Cambiar el tiempo de acceso y de modificación con Touch
+Para cambiar tanto el tiempo de acceso como el tiempo de modificación con un solo comando, usa las opciones –a y –m juntas:
+touch -am nombre_archivo1.txt
+
+Cambiar el tiempo de acceso sin crear un nuevo archivo
+Si deseas cambiar el tiempo de acceso y de modificación de un archivo existente a la hora actual sin crear realmente un nuevo archivo. Usa la opción –c seguida del nombre del archivo con el comando touch.
+touch -c nombre_archivo.txt
+
+Establecer un tiempo de acceso y de modificación específicos con Touch
+También es posible establecer el tiempo de acceso y modificación de un archivo a una fecha en particular usando la opción -t seguida de la fecha a considerar para el cambio. Se vería así:
+touch -t 201903081047.30 nombre_archivo.txt
+
+El formato de fecha y hora debe estar en CCYYMMDDhhmm.ss donde:
+CC: los dos primeros dígitos del año
+YY: los dos segundos dígitos del año
+MM: El mes del año [01-12]
+DD: El día del mes [01-31]
+hh: La hora del día [00-23]
+Mm: El minuto de la hora [00-59]
+SS: El segundo del minuto [00-59]
+PICO
+Permite modificar un fichero
+Sintaxis 
+$pico nombreArchivo.txt
+Ejemplos y utilidades:
+Se desea editar el archivo prueba.txt
+$ pico prueba.txt
+
+PASSWD
+El comando passwd se utiliza para cambiar la contraseña del usuario que se pasa como argumento.
+Ejemplos y utilidades:
+Si se tiene privilegios de superusuario, entonces puedes cambiar la clave de otros usuarios del sistema. Agregaremos el prefijo “sudo”, para entrar al terminal como súper usuario. En general, Passwd, mantiene una sintaxis similar a esta
+passwd [OPCIONES] [USUARIO]
+
+Opciones:
+
+-a informa del estado de las contraseñas de todas las cuentas.
+-d borra la contraseña para la cuenta indicada.
+-e fuerza a que la contraseña de la cuenta caduque.
+-h muestra este mensaje de ayuda y termina.
+-k cambia la contraseña sólo si ha caducado.
+-l bloquea la contraseña de la cuenta indicada.
+-q modo silencioso.
+-S informa del estado de la contraseña la cuenta indicada.
+-u desbloquea la contraseña de la cuenta indicada.
+-i INACTIVO establece la contraseña inactiva después de caducar a INACTIVO.
+-w DÍAS_AVISO establece el aviso de caducidad a DÍAS_AVISO.
+-n DÍAS_MIN establece el número mínimo de días antes de que se cambie la contraseña a DÍAS_MIN.
+-x DÍAS_MAX establece el número máximo de días antes de cambiar la contraseña a DÍAS_MAX.
+DU
+du (abreviatura de disk usage, uso de disco) es un comando estándar de los sistemas operativos de la familia unix. se usa para estimar el uso de espacio en disco duro de un archivo, un directorio en particular o de archivos en un sistema de archivos.
+Ejemplos y utilidades:
+Si queremos ver específicamente el peso de un archivo o carpeta de la forma más fácil, ejecutamos:
+$ du -bsh Videos/
+Ahora, vamos a ver cuáles son los directorios más pesados que tenemos en nuestro /home organizados de mayor a menor:
+$ du -sm *
+Si sólo quisiéramos ver cuáles son, por ejemplo, los 5 directorios más pesados en nuestro /home podríamos usar du con una serie de comandos extras, por ejemplo:
+$ du -sm * | sort -nr | head -5
+
+
+
+
+

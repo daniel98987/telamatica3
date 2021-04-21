@@ -1,0 +1,9 @@
+# 7. Pasos realizados en los puntos 8,9,10,11 y 12.
+# Pasos PUNTO 8
+# Para copaiar los archivos comandos.txt (1,2,3,4) al directorio todo
+# se realizo los siguientes pasos:
+# copiar Comandos1.txt 
+cp /home/user118/ejercicio1/a/a1/Comandos1.txt /home/user118/ejercicio1/copia/
+# Copiar comandos2.txt
+cp /home/user
+

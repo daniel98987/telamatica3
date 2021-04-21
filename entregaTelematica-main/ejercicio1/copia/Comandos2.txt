@@ -1,0 +1,230 @@
+CP
+El comando cp ("copy") copia ficheros y directorios.
+Ejemplos y utilidades:
+Copiar un fichero “f1.png” que está en el directorio actual a otro directorio “dir1” con otro nombre “f1copia.png”
+$ cp f1.png dir1/f1copia.png
+En este ejemplo se copian todos los ficheros con extensión "png" al directorio "dir1
+$ cp *.png dir1
+
+MV
+El comando mv se utiliza para mover o renombrar los archivos y directorios en su sistema de archivos del sistema operativo. Adicionalmente nos presenta una opción con la cual también podemos hacer respaldo de archivos.
+Ejemplos y utilidades:
+Cambiar el nombre de un archivo llamado origen a destino:
+
+[code] mv [ opciones ] [ -T ] origen destino [/code]
+Mover los archivos origen a un directorio llamado destino:
+[code] mv [ opciones ] origen [ origen2 …] destino [/code]
+
+FIND 
+El comando más común utilizado para encontrar y filtrar archivos en Linux es a través del comando find. El diseño básico de este comando es el siguiente:
+find <startingdirectory> <options> <search term>
+
+omienza con la palabra clave find, que alerta a Linux de que lo que sigue se refiere a la búsqueda de un archivo. El argumento <startingdirectory> es el punto de origen de donde deseas iniciar la búsqueda. Puede ser reemplazado con varios argumento, incluyendo:
+/ (slash) – busca en todo el sistema.
+. (punto) – busca en la carpeta en la que estás trabajando actualmente (directorio actual).
+~ (tilde) – para buscar desde tu directorio home.
+Ejemplos y utilidades:
+Búsqueda por nombre
+$ find . -name my-file
+
+Búsqueda por tipo
+Linux permite a los usuarios listar toda la información basada en sus tipos. Hay varios filtros que puedes usar:
+* d – directorio o carpeta
+* f – archivo normal
+* l – enlace simbólico
+* c – dispositivos de caracteres
+* b – dispositivos de bloque
+Un ejemplo simple del uso del tipo de archivo para la búsqueda se puede ver a continuación:
+$find / -type d
+
+Esto mostrará una lista de todos los directorios presentes en tu sistema de archivos, al haber comenzado la búsqueda desde nuestro directorio raíz con el símbolo de barra inclinada /.
+También puedes concatenar las opciones -type y -name para hacer tus búsquedas aún más específicas:
+
+$find / -type f -name my-file
+
+Esto buscará archivos llamados my-file, excluyendo directorios o enlaces.
+Búsqueda por fecha
+Si quieres buscar archivos en función de su fecha de acceso y los registros de fecha de modificación, Linux te ofrece las herramientas para hacerlo. Hay 3 registros de tiempo de los cuales Linux realiza seguimiento en los archivos:
+Tiempo de acceso (-atime) – Fecha más reciente en que el archivo fue leído o escrito.
+Tiempo de modificación (-mtime) – Fecha más reciente en que se modificó el archivo.
+Hora de cambio (-ctime) – Fecha más reciente en que se actualizaron los metadatos del archivo.
+Esta opción debe usarse con un número que especifica cuántos días pasaron desde que se accedió, modificó o cambió el archivo:
+$ find / -atime 1
+
+Este comando mostrara todos los archivos a los que se accedió hace un día desde el momento actual.
+
+Búsqueda por tamaño
+Linux te brinda la opción de buscar archivos según sus tamaños. La sintaxis básica para buscar archivos por tamaño es:
+$find <startingdirectory> -size <size-magnitude> <size-unit>
+
+Puedes especificar las siguientes unidades de tamaño:
+* c – bytes
+* k – kilobytes
+* M – megabytes
+* G – gigabytes
+* b – trozos de 512 bytes
+Un ejemplo simple de cómo usar el comando find de Linux para los tamaños de archivo es el siguiente:
+$find / -size 10M
+
+Esto buscará en tu sistema archivos que tengan exactamente 10 megabytes de tamaño. Al igual que cuando buscaste en función del tiempo, puedes filtrar aún más tus búsquedas con los signos más y menos:
+$find / -size +5G
+
+Búsqueda por propiedad
+Linux te da la capacidad de especificar tus búsquedas según la propiedad del archivo. Para buscar archivos de un determinado propietario, se debe ejecutar el siguiente comando:
+$find / -user John
+
+Esto devolverá una lista de todos los archivos que posee el usuario llamado john. Similar a los nombres de usuario, también podemos buscar archivos a través de nombres de grupo:
+$find / -group classroom
+Búsqueda por permisos
+Los usuarios pueden buscar archivos basados ??en los permisos de los archivos con la opción -perm. Por ejemplo:
+$ find / -perm 644
+
+En Linux, 644 corresponde a permisos de lectura y escritura. Lo que significa que este comando buscará todos los archivos que solo tienen permisos de lectura y escritura. Puedes jugar con esta opción un poco más, así:
+$ find / -perm -644
+
+Al agregar un guion, se mostrarán todos los archivos que tengan al menos el permiso 644.
+TAIL
+El comando Tail es un excelente comando utilizado para imprimir los últimos N números o colas (tails) de una entrada. Por lo general, muestra o imprime los últimos 10 números del archivo que se le proporcionó a través de la entrada estándar y entrega el resultado en la salida estándar. Si lo usamos sobre un solo nombre de archivo, los datos de cada archivo proceden por su nombre de archivo con un encabezado.
+Ejemplos y utilidades:
+Para ver los últimos diez números de un archivo, escribe el siguiente comando:
+tail nombre_de_archivo
+
+O alternativamente:
+tail ruta_de_archivo
+
+La salida mostrará las últimas 10 líneas del archivo.
+Para limitar el número de líneas que se muestran
+El comando tail le da a los usuarios la capacidad de ver el número de líneas según el requerimiento mediante el uso del comando –n.
+La forma simple y fácil de realizar esto es:
+Tail –n* ruta_de_archivo
+
+El * indica el número de líneas que quieres imprimir.
+Por ejemplo, si deseamos ver dos líneas de un archivo en particular, usaremos el siguiente comando:
+tail -n2 devisers.txt
+
+2 es el número de archivo para ver, mientras que devisers.txt define el nombre del archivo.
+Para ver el último número de bytes de datos
+Para ver el último número o cierto número de bytes de un archivo muy grande, usa la opción -c para simplificar la cola a mostrar.
+tail –c* ruta_de_archivo
+
+Aquí el * representa el número de bytes. Reemplázalo de acuerdo a lo que deseas ver.
+Para vigilar un archivo para ver los cambios
+Para examinar un archivo en busca de variaciones, usa el comando tail en Linux seguido de la opción -f. Este comando es útil al ver las últimas diez líneas de un archivo. Esta opción se usa comúnmente para rastrear archivos de registro en tiempo real. Para nuestro archivo devisers.txt, el comando se vería así:
+tail -f devisers.txt
+
+
+UNAME
+El comando linux uname sirve para imprimir información del sistema linux
+Ejemplos y utilidades:
+uname -a
+La opción -a nos del comando uname nos da toda la información disponible.
+
+Las opciones del comando uname que tenemos disponibles son las siguientes: 
+-a, –all imprime toda la información, en el orden siguiente, excepto -p y -i si son desconocidos: 
+-s, –kernel-name imprime el nombre del kernel 
+-n, –nodename imprime el nombre del hostname
+ -r, –kernel-release imprime la release del kernel de sistema 
+-v, –kernel-version imprime la versión del kernel de sistema 
+-m, –machine imprime el nombre de la máquina 
+-p, –processor imprime el tipo de procesador, en caso desconocido «unknown»
+ -i, –hardware-platform imprime el nombre de la plataforma hard, en caso desconocido «unknown»
+ -o, –operating-system imprime el nombre del sistema operativo
+TOP
+El comando top nos ayuda a conocer los procesos de ejecución del sistema (y más cosas) en tiempo real y es una de las herramientas más importantes para un administrador. 
+Ejemplos y utilidades:
+Abrimos una consola y simplemente ejecutamos el comando:
+$ top
+En la primera línea nos muestra:
+Hora actual.
+Tiempo que ha estado el sistema encendido.
+Número de usuarios (mario y root).
+Carga media en intervalos de 5, 10 y 15 minutos respectivamente.
+La segunda línea muestra el total de tareas y procesos, los cuales pueden estar en diferentes estados. Yo lo tengo en castellano y la traducción es un poco pobre, así que lo explico en inglés:
+Running (ejecutar): procesos ejecutándose actualmente o preparados para ejecutarse.
+Sleeping (hibernar): procesos dormidos esperando que ocurra algo (depende del proceso) para ejecutarse.
+Stopped (detener): ejecución de proceso detenida.
+Zombie: el proceso no está siendo ejecutado. Estos procesos se quedan en este estado cuando el proceso que los ha iniciado muere (padre).
+Esta línea nos muestra los porcentajes de uso del procesador diferenciado por el uso que se le de.
+us (usuario): tiempo de CPU de usuario.
+sy (sistema): tiempo de CPU del kernel.
+id (inactivo): tiempo de CPU en procesos inactivos.
+wa (en espera): tiempo de CPU en procesos en espera.
+hi (interrupciones de hardware): interrupciones de hardware.
+si (interrupciones de software): tiempo de CPU en interrupciones de software.
+En la línea cuatro encontramos la memoria física 
+ Memoria total.
+Memoria utilizada.
+Memoria libre.
+Memoria utilizada por buffer.
+En la línea cinco encontramos la memoria virtual
+ Memoria total.
+Memoria usada.
+Memoria libre.
+Memoria en caché.
+Columnas 
+PID: es el identificador de proceso. Cada proceso tiene un identificador único.
+USER (USUARIO): usuario propietario del proceso.
+PR: prioridad del proceso. Si pone RT es que se está ejecutando en tiempo real.
+NI: asigna la prioridad. Si tiene un valor bajo (hasta -20) quiere decir que tiene más prioridad que otro con valor alto (hasta 19).
+VIRT: cantidad de memoria virtual utilizada por el proceso.
+RES: cantidad de memoria RAM física que utiliza el proceso.
+SHR: memoria compartida.
+S (ESTADO): estado del proceso.
+%CPU: porcentaje de CPU utilizado desde la última actualización.
+%MEM: porcentaje de memoria física utilizada por el proceso desde la última actualización.
+TIME+ (HORA+): tiempo total de CPU que ha usado el proceso desde su inicio.
+COMMAND: comando utilizado para iniciar el proceso.
+
+APT-GET
+apt-get es el comando en sistemas derivados de debian para instalar programas en linux, borrarlos, actualizar los repositorios y actualizar el sistema desde la línea de comandos.
+Ejemplos y utilidades:
+Para instalar programas utilizamos install, por ejemplo, si queremos instalar el filezilla, que es un cliente de ftp.
+
+sudo apt-get install filezilla
+Para borrar programas utilizamos remove o auto-remove. remove solo borra el programa y auto-remove sus dependencias y configuraciones.
+
+sudo apt-get auto-remove filezilla
+Con el parametro update actualizamos los repositorios.
+
+sudo apt-get update
+
+Y con el parámetro upgrade actualizamos el sistema
+
+sudo apt-get upgrade
+
+Como todos los comandos de linux con --help acedemos a la ayuda-
+
+sudo apt-get --help
+
+	REBOOT 
+Es un commando para reiniciar el servidor de linux 
+Sintaxis
+reboot [-n ] [- w ] [- d] [- f] [ -i ]
+Ejemplos y utilidades  
+-n No sincronizar antes de reiniciar. Tenga en cuenta que los controladores del núcleo y de almacenamiento pueden todavía sincronizar.
+- w en realidad no reinicia, pero sólo escriben el registro wtmp (en el directorio / var / log / wtmp) .
+-d No escribe el registro wtmp. El indicador-n implica - d.
+-f Fuerza a reboot , no llama a shutdown.
+- Apaga todas las interfaces de red justo antes de detener o reiniciar el sistema.
+-h Pone todos los discos duros en el sistema en modo de espera antes de detenerse o de apagarse.
+-p Cuando apagamos el sistema, se desconecta la alimentación. Este es el valor por defecto cuando halt es llamado como poweroff.
+POWEROFF
+Es un comando usado en el sistemas operativos UNIX. Se utiliza para detener el sistema.
+Sintaxis 
+poweroff [-n] [-w] [-d] [-f] [-i]
+Ejemplos y utilidades: 
+-n No sincroniza antes de reiniciar o detener.
+-w No reinicia o detiene el sistema, únicamente escribe la grabación en wtmp (en el fichero /var/log/wtmp).
+-d No escribe la grabación wtmp. El flag -n implica -d.
+-f Fuerza una detención o reinicio, no llama a shutdown.
+-i Apaga todos los interfaces de redes justo antes de detener o reiniciar.
+-p Cuando detiene el sistema, hace un apagado. Esto actúa por defecto cuando halt es llamado como poweroff.
+
+
+
+
+
+
+
+
+
